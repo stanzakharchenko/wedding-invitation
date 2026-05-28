@@ -432,7 +432,7 @@ img {
 
 .schedule-section__blob {
   z-index: 1;
-  width: clamp(280px, 78vw, 360px);
+  width: clamp(280px, 86vw, 420px);
   top: 0%;
   left: -5%;
 }
@@ -440,8 +440,8 @@ img {
 .schedule-section__title {
   position: absolute;
   z-index: 3;
-  top: 5.2%;
-  left: 7%;
+  top: 6%;
+  left: 6%;
   margin: 0;
   color: var(--text);
   font-family: var(--font-display);
