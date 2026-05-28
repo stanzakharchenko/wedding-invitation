@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Wedding RSVP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Seymour+One&display=swap"
+  rel="stylesheet"
+/>
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- Mobile invitation page -->
+  <main class="page" id="mobilePage">
+    <section class="top-wave" aria-hidden="true">
+      <svg class="top-wave__svg" id="topWaveSvg">
+        <path id="topWavePath" fill="none"></path>
+
+        <text class="top-wave__text">
+          <textPath id="topWaveTextPath" href="#topWavePath" startOffset="0">
+            запрошення на весілля
+          </textPath>
+        </text>
+      </svg>
+    </section>
+
+    <section class="hero">
+      <!-- Green blobs -->
+      <img class="decor decor--blob-green decor--blob-green-right" src="./assets/decor/blobs/blob-green-01.svg"
+        alt="" />
+
+      <img class="decor decor--blob-green decor--blob-green-left" src="./assets/decor/blobs/blob-green-02.svg" alt="" />
+
+      <!-- Couple photos -->
+      <img class="hero-photo hero-photo--right" src="./assets/images/couple-hero.png" alt="Стас і Поліна" />
+
+      <img class="hero-photo hero-photo--left" src="./assets/images/couple-second.png" alt="Стас і Поліна" />
+
+      <!-- Names -->
+      <div class="hero-names">
+        <div class="hero-names__item hero-names__item--stas">СТАС</div>
+        <div class="hero-names__item hero-names__item--plus">+</div>
+        <div class="hero-names__item hero-names__item--polina">ПОЛІНА</div>
+      </div>
+
+      <!-- Goldenrod flowers -->
+      <img class="goldenrod goldenrod--right-01" src="./assets/decor/flowers/goldenrod.svg" alt="" />
+
+      <img class="goldenrod goldenrod--right-02" src="./assets/decor/flowers/goldenrod.svg" alt="" />
+
+      <img class="goldenrod goldenrod--left-01" src="./assets/decor/flowers/goldenrod.svg" alt="" />
+
+      <img class="goldenrod goldenrod--left-02" src="./assets/decor/flowers/goldenrod.svg" alt="" />
+
+      <!-- Brown flowers -->
+      <img class="brown-flower brown-flower--left" src="./assets/decor/flowers/flower-brown-01.svg" alt="" />
+
+      <img class="brown-flower brown-flower--right" src="./assets/decor/flowers/flower-brown-02.svg" alt="" />
+    </section>
+    <section class="details-section">
+  <div class="details-section__blob-wrap">
+    <img
+      class="details-section__blob"
+      src="./assets/decor/blobs/blob-pink-01.svg"
+      alt=""
+    />
+  </div>
+
+  <div class="details-section__content">
+    <p class="details-section__invite">
+      {name}, запрошуємо вас/тебе<br />
+      на наше весілля!
+    </p>
+
+    <p class="details-section__date">15.08.2026</p>
+
+    <p class="details-section__text">
+      Ми будемо щасливі розділити<br />
+      з вами день нашого весілля.<br />
+      Будь ласка, підтвердіть<br />
+      вашу присутність у формі нижче.
+    </p>
+
+    <h2 class="details-section__title">МІСЦЕ</h2>
+
+    <div class="details-section__location">
+      <div class="location-card">
+        <img
+          class="location-card__image"
+          src="./assets/images/location.jpg"
+          alt="Художній музей"
+        />
+
+        <p class="location-card__caption">ХУДОЖНІЙ МУЗЕЙ</p>
+      </div>
+
+      <p class="details-section__address">
+        м. Чернігів, вул. Музейна, 6
+      </p>
+
+      <a
+        class="details-section__button"
+        href="https://www.google.com/maps/search/?api=1&query=Художній+музей+Чернігів+вул.+Музейна+6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Побудувати маршрут
+      </a>
+    </div>
+  </div>
+</section>
+<section class="schedule-section">
+  <img
+    class="schedule-section__blob"
+    src="./assets/decor/blobs/blob-blue-01.svg"
+    alt=""
+  />
+
+  <!-- Flowers -->
+  <img
+    class="schedule-flower schedule-flower--01"
+    src="./assets/decor/flowers/flower-brown-03.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-flower schedule-flower--02"
+    src="./assets/decor/flowers/flower-brown-01.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-flower schedule-flower--03"
+    src="./assets/decor/flowers/flower-brown-02.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-flower schedule-flower--04"
+    src="./assets/decor/flowers/flower-brown-04.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-flower schedule-flower--05"
+    src="./assets/decor/flowers/flower-brown-05.svg"
+    alt=""
+  />
+
+  <!-- Arrows -->
+  <img
+    class="schedule-arrow schedule-arrow--01"
+    src="./assets/decor/arrows/arrow-03.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-arrow schedule-arrow--02"
+    src="./assets/decor/arrows/arrow-01.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-arrow schedule-arrow--03"
+    src="./assets/decor/arrows/arrow-01.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-arrow schedule-arrow--04"
+    src="./assets/decor/arrows/arrow-02.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-arrow schedule-arrow--05"
+    src="./assets/decor/arrows/arrow-03.svg"
+    alt=""
+  />
+
+  <img
+    class="schedule-arrow schedule-arrow--06"
+    src="./assets/decor/arrows/arrow-01.svg"
+    alt=""
+  />
+
+  <h2 class="schedule-section__title">о котрій?</h2>
+
+  <div class="schedule-event schedule-event--01">
+    <p class="schedule-event__time">14:00</p>
+    <p class="schedule-event__title">Збір гостей</p>
+    <p class="schedule-event__desc">
+      Буде легенький фуршет<br />
+      та знайомство гостей
+    </p>
+  </div>
+
+  <div class="schedule-event schedule-event--02">
+    <p class="schedule-event__time">14:30</p>
+    <p class="schedule-event__title">Церемонія</p>
+  </div>
+
+  <div class="schedule-event schedule-event--03">
+    <p class="schedule-event__time">15:00</p>
+    <p class="schedule-event__title">Привітання від гостей</p>
+    <p class="schedule-event__desc">
+      Будемо спілкуватись<br />
+      та фотографуватись
+    </p>
+  </div>
+
+  <div class="schedule-event schedule-event--04">
+    <p class="schedule-event__time">15:30</p>
+    <p class="schedule-event__title">Початок банкету</p>
+    <p class="schedule-event__desc">
+      Смачно поїмо та<br />
+      наберемось сил для танців
+    </p>
+  </div>
+
+  <div class="schedule-event schedule-event--05">
+    <p class="schedule-event__time">16:30</p>
+    <p class="schedule-event__title">Перший танець</p>
+  </div>
+
+  <div class="schedule-event schedule-event--06">
+    <p class="schedule-event__time">20:00</p>
+    <p class="schedule-event__title">Вечірні ритуали</p>
+    <p class="schedule-event__desc">
+      Винос торту та кидання букету
+    </p>
+  </div>
+
+  <div class="schedule-event schedule-event--07">
+    <p class="schedule-event__time">22:00</p>
+    <p class="schedule-event__title">Кінець вечірки</p>
+    <p class="schedule-event__desc">
+      Всі задоволені<br />
+      повертаються додому
+    </p>
+  </div>
+</section>
+<section class="dresscode-section">
+  <img
+    class="dresscode-section__blob"
+    src="./assets/decor/blobs/blob-blue-02.svg"
+    alt=""
+  />
+
+  <h2 class="dresscode-section__title">ДРЕСКОД</h2>
+
+  <div class="dresscode-section__palette" aria-label="Палітра дрескоду">
+    <span class="dresscode-section__dot dresscode-section__dot--01"></span>
+    <span class="dresscode-section__dot dresscode-section__dot--02"></span>
+    <span class="dresscode-section__dot dresscode-section__dot--03"></span>
+    <span class="dresscode-section__dot dresscode-section__dot--04"></span>
+    <span class="dresscode-section__dot dresscode-section__dot--05"></span>
+  </div>
+</section>
+<section class="rsvp-section">
+  <img
+    class="rsvp-section__blob"
+    src="./assets/decor/blobs/blob-green-03.svg"
+    alt=""
+  />
+
+  <div class="rsvp-section__content">
+    <h2 class="rsvp-section__title">ВИ З НАМИ?</h2>
+
+    <p class="rsvp-section__text">
+      Будь ласка, дайте нам знати<br />
+      про вашу присутність<br />
+      до 1 липня 2026 року.
+    </p>
+
+    <div class="rsvp-section__actions">
+      <button class="rsvp-section__button" id="rsvpYesButton" type="button">Так</button>
+      <button class="rsvp-section__button" id="rsvpNoButton" type="button">Ні</button>
+    </div>
+  </div>
+</section>
+<section class="wishes-section" id="wishesSection" hidden>
+  <form class="wishes-form" id="wishesForm">
+    <button class="wishes-form__back" id="wishesBackButton" type="button">
+  ← Назад
+</button>
+
+    <div class="wishes-form__field">
+      <label class="wishes-form__label" for="guestCount">Кількість гостей</label>
+      <input
+        class="wishes-form__input"
+        id="guestCount"
+        name="guestCount"
+        type="number"
+        min="1"
+        inputmode="numeric"
+        placeholder="3"
+        required
+      />
+    </div>
+
+    <div class="wishes-form__field">
+      <label class="wishes-form__label" for="guestNames">Імена гостей</label>
+      <input
+        class="wishes-form__input"
+        id="guestNames"
+        name="guestNames"
+        type="text"
+        placeholder="Інна, Ілля, Аміна"
+        required
+      />
+    </div>
+
+    <h2 class="wishes-form__title">НАПОЇ</h2>
+
+    <p class="wishes-form__text">
+      Оберіть напої, яким ви<br />
+      віддаєте перевагу. Можна обрати<br />
+      декілька варіантів.
+    </p>
+
+    <div class="wishes-form__drinks" aria-label="Побажання по алкоголю">
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Вино" />
+        <span>Вино</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Ігристе" />
+        <span>Ігристе</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Горілка" />
+        <span>Горілка</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Віскі" />
+        <span>Віскі</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Ром" />
+        <span>Ром</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Джин" />
+        <span>Джин</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Пиво" />
+        <span>Пиво</span>
+      </label>
+
+      <label class="drink-option">
+        <input type="checkbox" name="drinks" value="Без алкоголю" />
+        <span>Без алкоголю</span>
+      </label>
+    </div>
+
+    <button class="wishes-form__submit" type="submit">
+      Надіслати відповідь
+    </button>
+  </form>
+</section>
+  </main>
+
+  <!-- Desktop / tablet fallback -->
+  <main class="desktop-404" id="desktop404">
+    <div class="desktop-404__content">
+      <p class="desktop-404__code">404</p>
+      <h1 class="desktop-404__title">Сторінка доступна тільки з телефону</h1>
+      <p class="desktop-404__text">
+        Це весільне запрошення створене спеціально для мобільного перегляду.
+        Будь ласка, відкрийте посилання зі смартфона.
+      </p>
+    </div>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./guests.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
