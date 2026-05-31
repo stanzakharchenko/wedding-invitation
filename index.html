@@ -19,7 +19,7 @@
 
 <body>
   <!-- Mobile invitation page -->
-  <main class="page" id="mobilePage">
+  <main class="page page--loading" id="mobilePage">
     <section class="top-wave" aria-hidden="true">
       <svg class="top-wave__svg" id="topWaveSvg">
         <path id="topWavePath" fill="none"></path>
@@ -76,7 +76,8 @@
 
   <div class="details-section__content">
     <p class="details-section__invite">
-      {name}, запрошуємо вас/тебе<br />
+      <span id="inviteName">Дорогі гості</span>, запрошуємо
+      <span id="invitePronoun">вас/тебе</span><br />
       на наше весілля!
     </p>
 
@@ -84,9 +85,9 @@
 
     <p class="details-section__text">
       Ми будемо щасливі розділити<br />
-      з вами день нашого весілля.<br />
-      Будь ласка, підтвердіть<br />
-      вашу присутність у формі нижче.
+      з <span id="detailsWithPronoun">вами</span> цей день.<br />
+      Будь ласка, <span id="detailsConfirmVerb">підтвердіть</span><br />
+      свою присутність у формі нижче.
     </p>
 
     <h2 class="details-section__title">МІСЦЕ</h2>
@@ -196,7 +197,7 @@
 
   <div class="schedule-event schedule-event--01">
     <p class="schedule-event__time">14:00</p>
-    <p class="schedule-event__title">Збір гостей</p>
+    <p class="schedule-event__title">Збори</p>
     <p class="schedule-event__desc">
       Буде легенький фуршет<br />
       та знайомство гостей
@@ -287,10 +288,95 @@
     </div>
   </div>
 </section>
+<section class="countdown-section" id="countdownSection" hidden>
+  <div class="countdown-section__content">
+    <h2 class="countdown-section__title">ДО ЗУСТРІЧІ</h2>
+
+    <div class="countdown-section__timer" aria-label="Таймер до весілля">
+      <div class="countdown-section__item">
+        <span class="countdown-section__number" id="countdownDays">00</span>
+        <span class="countdown-section__label">днів</span>
+      </div>
+
+      <div class="countdown-section__item">
+        <span class="countdown-section__number" id="countdownHours">00</span>
+        <span class="countdown-section__label">годин</span>
+      </div>
+
+      <div class="countdown-section__item">
+        <span class="countdown-section__number" id="countdownMinutes">00</span>
+        <span class="countdown-section__label">хвилин</span>
+      </div>
+
+      <div class="countdown-section__item">
+        <span class="countdown-section__number" id="countdownSeconds">00</span>
+        <span class="countdown-section__label">секунд</span>
+      </div>
+    </div>
+
+    <p class="countdown-section__text">
+      Незабаром побачимось<br />
+      на нашому святі
+    </p>
+
+    <img
+  class="countdown-section__flower"
+  src="./assets/decor/flowers/flower-brown-06.svg"
+  alt=""
+/>
+  </div>
+</section>
+<section class="decline-check-section" id="declineCheckSection" hidden>
+  <div class="decline-check-section__content">
+    <h2 class="decline-check-section__title">
+      ПЕРЕВІРТЕ<br />
+      ВІДПОВІДЬ
+    </h2>
+
+    <p class="decline-check-section__text">
+      Ви впевнені, що ніхто<br />
+      із запрошених гостей не буде<br />
+      присутній на весіллі?
+    </p>
+
+    <p class="decline-check-section__note">
+      *Якщо хоча б одна людина<br />
+      з вашого запрошення<br />
+      буде на весіллі, будь ласка,<br />
+      оберіть відповідь “Так”.
+    </p>
+
+    <div class="decline-check-section__actions">
+      <button class="decline-check-section__button" id="declineConfirmButton" type="button">
+        Підтвердити відповідь
+      </button>
+
+      <button class="decline-check-section__button" id="declineChangeButton" type="button">
+        Змінити відповідь
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="decline-final-section" id="declineFinalSection" hidden>
+  <div class="decline-final-section__content">
+    <h2 class="decline-final-section__title">
+      НАМ ДУЖЕ<br />
+      ШКОДА
+    </h2>
+
+    <div class="decline-final-section__emoji" aria-hidden="true">😞</div>
+  </div>
+</section>
 <section class="wishes-section" id="wishesSection" hidden>
   <form class="wishes-form" id="wishesForm">
     <button class="wishes-form__back" id="wishesBackButton" type="button">
-  ← Назад
+  <img
+    class="wishes-form__back-icon"
+    src="./assets/decor/arrows/back-arrow.svg"
+    alt=""
+  />
+  <span>Назад</span>
 </button>
 
     <div class="wishes-form__field">
@@ -322,8 +408,8 @@
     <h2 class="wishes-form__title">НАПОЇ</h2>
 
     <p class="wishes-form__text">
-      Оберіть напої, яким ви<br />
-      віддаєте перевагу. Можна обрати<br />
+      Оберіть напої, яким ви
+      віддаєте перевагу. Можна обрати
       декілька варіантів.
     </p>
 
@@ -365,7 +451,7 @@
 
       <label class="drink-option">
         <input type="checkbox" name="drinks" value="Без алкоголю" />
-        <span>Без алкоголю</span>
+        <span>Б/а</span>
       </label>
     </div>
 
