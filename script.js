@@ -292,7 +292,9 @@ async function submitGuestResponse(payload) {
   const data = await response.json();
 
   if (!data.ok) {
-    throw new Error(data.error || "Failed to submit RSVP");
+    const error = new Error(data.error || "Failed to submit RSVP");
+    error.responseData = data;
+    throw error;
   }
 }
 
@@ -468,6 +470,24 @@ function setupRsvpFlow() {
     });
   }
 
+  const serverStatus = String(ACTIVE_GUEST?.status || "")
+  .trim()
+  .toLowerCase();
+
+  if (serverStatus === "accepted") {
+    localStorage.setItem(RSVP_COMPLETED_KEY, "true");
+    localStorage.removeItem(RSVP_DECLINED_KEY);
+    showCountdownSection(false);
+    return;
+  }
+
+  if (serverStatus === "declined") {
+    localStorage.setItem(RSVP_DECLINED_KEY, "true");
+    localStorage.removeItem(RSVP_COMPLETED_KEY);
+    showDeclineFinalScreen();
+    return;
+  }
+
   const isRsvpCompleted = localStorage.getItem(RSVP_COMPLETED_KEY) === "true";
   const isRsvpDeclined = localStorage.getItem(RSVP_DECLINED_KEY) === "true";
 
@@ -488,77 +508,103 @@ function setupRsvpFlow() {
   });
 
   declineConfirmButton.addEventListener("click", async () => {
-  const declineData = {
-    attending: false,
-    submittedAt: new Date().toISOString()
-  };
+    const declineData = {
+      attending: false,
+      submittedAt: new Date().toISOString()
+    };
 
-  setButtonLoading(declineConfirmButton, true, "Надсилаємо");
+    setButtonLoading(declineConfirmButton, true, "Надсилаємо");
 
-  try {
-    await submitGuestResponse({
-      guestId,
-      ...declineData
-    });
-  } catch (error) {
-    console.error(error);
-    alert("Не вдалося надіслати відповідь. Спробуйте ще раз.");
-    setButtonLoading(declineConfirmButton, false);
-    return;
-  }
+    try {
+      await submitGuestResponse({
+        guestId,
+        ...declineData
+      });
+    } catch (error) {
+      console.error(error);
 
-  localStorage.setItem(RSVP_RESPONSE_KEY, JSON.stringify(declineData));
-  localStorage.setItem(RSVP_DECLINED_KEY, "true");
-  localStorage.removeItem(RSVP_COMPLETED_KEY);
+      if (error.responseData?.alreadySubmitted) {
+        alert("Відповідь уже була надіслана раніше.");
 
-  showDeclineFinalScreen();
-});
+        if (error.responseData.status === "accepted") {
+          showCountdownSection(true);
+        } else {
+          showDeclineFinalScreen();
+        }
+
+        return;
+      }
+
+      alert("Не вдалося надіслати відповідь. Спробуйте ще раз.");
+      setButtonLoading(declineConfirmButton, false);
+      return;
+    }
+
+    localStorage.setItem(RSVP_RESPONSE_KEY, JSON.stringify(declineData));
+    localStorage.setItem(RSVP_DECLINED_KEY, "true");
+    localStorage.removeItem(RSVP_COMPLETED_KEY);
+
+    showDeclineFinalScreen();
+  });
 
   wishesForm.addEventListener("submit", async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const submitButton = wishesForm.querySelector(".wishes-form__submit");
-  const formData = new FormData(wishesForm);
+    const submitButton = wishesForm.querySelector(".wishes-form__submit");
+    const formData = new FormData(wishesForm);
 
-  const validationError = validateGuestForm(formData);
+    const validationError = validateGuestForm(formData);
 
-  if (validationError) {
-    alert(validationError);
-    return;
-  }
+    if (validationError) {
+      alert(validationError);
+      return;
+    }
 
-  const responseData = {
-    attending: true,
-    guestCount: formData.get("guestCount"),
-    guestNames: formatGuestNamesInput(formData.get("guestNames")),
-    drinks: formData.getAll("drinks"),
-    submittedAt: new Date().toISOString()
-  };
+    const responseData = {
+      attending: true,
+      guestCount: formData.get("guestCount"),
+      guestNames: formatGuestNamesInput(formData.get("guestNames")),
+      drinks: formData.getAll("drinks"),
+      submittedAt: new Date().toISOString()
+    };
 
-  console.log("RSVP response:", responseData);
+    console.log("RSVP response:", responseData);
 
-  setButtonLoading(submitButton, true, "Надсилаємо");
+    setButtonLoading(submitButton, true, "Надсилаємо");
 
-  try {
-    await submitGuestResponse({
-      guestId,
-      ...responseData
-    });
-  } catch (error) {
-    console.error(error);
-    alert("Не вдалося надіслати відповідь. Спробуйте ще раз.");
-    setButtonLoading(submitButton, false);
-    return;
-  }
+    try {
+      await submitGuestResponse({
+        guestId,
+        ...responseData
+      });
+    } catch (error) {
+      console.error(error);
 
-  localStorage.setItem(RSVP_RESPONSE_KEY, JSON.stringify(responseData));
-  localStorage.setItem(RSVP_COMPLETED_KEY, "true");
-  localStorage.removeItem(RSVP_DECLINED_KEY);
+      if (error.responseData?.alreadySubmitted) {
+        alert("Відповідь уже була надіслана раніше.");
 
-  wishesForm.reset();
+        if (error.responseData.status === "accepted") {
+          showCountdownSection(true);
+        } else {
+          showDeclineFinalScreen();
+        }
 
-  showCountdownSection(true);
-});
+        return;
+      }
+
+      alert("Не вдалося надіслати відповідь. Спробуйте ще раз.");
+      setButtonLoading(submitButton, false);
+      return;
+    }
+
+    localStorage.setItem(RSVP_RESPONSE_KEY, JSON.stringify(responseData));
+    localStorage.setItem(RSVP_COMPLETED_KEY, "true");
+    localStorage.removeItem(RSVP_DECLINED_KEY);
+
+    wishesForm.reset();
+
+    showCountdownSection(true);
+  });
 }
 
 function setupWeddingCountdown() {

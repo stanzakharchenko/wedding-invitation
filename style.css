@@ -1061,7 +1061,7 @@ img {
 }
 
 .wishes-form__title {
-  margin: 32px 0 22px;
+  margin: 26px 0 22px;
   color: var(--text);
   font-family: var(--font-display);
   font-size: clamp(30px, calc(36 / 430 * 100vw), 36px);
@@ -1483,4 +1483,14 @@ img {
     line-height: 1.6;
   }
 
+}
+
+.wishes-form__hint {
+  margin: -4px 0 26px;
+  color: var(--text);
+  font-family: var(--font-main);
+  font-size: clamp(14px, calc(16 / 430 * 100vw), 16px);
+  font-weight: 500;
+  line-height: 1.25;
+  opacity: 0.78;
 }
