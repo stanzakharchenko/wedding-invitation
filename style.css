@@ -1000,7 +1000,7 @@ img {
 .wishes-form__back {
   display: inline-flex;
   min-height: 42px;
-  margin: 0 0 28px;
+ 
   padding: 0;
   align-items: center;
   gap: 8px;
@@ -1486,7 +1486,7 @@ img {
 }
 
 .wishes-form__hint {
-  margin: 0px 0 22px;
+  margin: 22px 0 22px;
   color: var(--text);
   font-family: var(--font-main);
   font-size: clamp(16px, calc(20 / 430 * 100vw), 20px);
