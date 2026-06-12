@@ -1486,7 +1486,7 @@ img {
 }
 
 .wishes-form__hint {
-  margin: 22px 0 22px;
+  margin: 22px 0 22px 0;  
   color: var(--text);
   font-family: var(--font-main);
   font-size: clamp(16px, calc(20 / 430 * 100vw), 20px);
